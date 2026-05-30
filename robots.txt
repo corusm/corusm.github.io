@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://corusm.github.io/sitemap.xml
