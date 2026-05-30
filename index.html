@@ -1,27 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-  ============================================================================
-  PERSONAL ACADEMIC WEBSITE  —  Niklas Leinz  —  single-file GitHub Pages site
-  ============================================================================
-  DEPLOY:
-   1. Create a GitHub repo named exactly:  YOUR-USERNAME.github.io
-   2. Put this file in the repo root as  index.html
-   3. Add your headshot to an  images/  folder and update the <img src="...">
-   4. Push. Live at  https://YOUR-USERNAME.github.io  within a minute or two.
-
-  DISCLOSURE NOTE (industrial PhD with VW + TUM):
-   • Naming Volkswagen and describing the research at this general level is fine:
-     VW's own public job posting for this position states the partner, the focus
-     (AI for automotive final assembly), and the methods (learning-based robotic
-     manipulation, collaborative robots, ROS, Isaac Sim/MuJoCo, PyTorch).
-   • STILL keep gated until cleared: result numbers, benchmark scores,
-     dataset/benchmark pages, specific use cases, tolerances, part/fixture
-     details, plant photos, hardware images, and any unpublished/patentable
-     method details. The posting being public does not make your results public.
-   • Only list papers AFTER they're published and cleared. (See template below.)
-  ============================================================================
--->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -37,131 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Libre+Franklin:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <style>
-    :root {
-      --bg:        #f7f8f6;
-      --bg-card:   #eef1ee;
-      --ink:       #181b1a;
-      --ink-soft:  #4d5552;
-      --ink-faint: #828b87;
-      --accent:    #1f5d6c;
-      --accent-2:  #2c7e92;
-      --rule:      #dde2df;
-      --tag-bg:    #e6ebe8;
-      --shadow:    0 1px 2px rgba(20,30,28,.05), 0 8px 24px rgba(20,30,28,.06);
-    }
-    html.dark {
-      --bg:        #101413;
-      --bg-card:   #181d1c;
-      --ink:       #e7ecea;
-      --ink-soft:  #aab3af;
-      --ink-faint: #757e7a;
-      --accent:    #5fb8cc;
-      --accent-2:  #7fcfe0;
-      --rule:      #262d2b;
-      --tag-bg:    #1f2624;
-      --shadow:    0 1px 2px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.35);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; background: var(--bg); color: var(--ink);
-      font-family: "Libre Franklin", system-ui, sans-serif;
-      font-size: 16.5px; line-height: 1.65; -webkit-font-smoothing: antialiased;
-      transition: background .35s ease, color .35s ease;
-    }
-    .wrap { max-width: 820px; margin: 0 auto; padding: clamp(2rem,5vw,4.5rem) clamp(1.2rem,5vw,2rem) 4rem; }
-
-    a { color: var(--accent); text-decoration: none; }
-    a.link {
-      background-image: linear-gradient(var(--accent), var(--accent));
-      background-size: 0% 1.5px; background-repeat: no-repeat; background-position: 0 100%;
-      transition: background-size .25s ease; padding-bottom: 1px;
-    }
-    a.link:hover { background-size: 100% 1.5px; }
-
-    h1, h2, h3 { font-family: "Newsreader", Georgia, serif; font-weight: 500; line-height: 1.15; }
-
-    .topbar { display: flex; justify-content: flex-end; margin-bottom: .5rem; }
-    .toggle {
-      font-family: "JetBrains Mono", monospace; font-size: .72rem; letter-spacing: .04em;
-      background: none; border: 1px solid var(--rule); color: var(--ink-soft);
-      padding: .35rem .7rem; border-radius: 999px; cursor: pointer;
-      transition: border-color .2s, color .2s;
-    }
-    .toggle:hover { border-color: var(--accent); color: var(--accent); }
-
-    header { animation: rise .7s ease both; }
-    .name { font-size: clamp(2.2rem,6vw,3.1rem); margin: 0 0 1.2rem; letter-spacing: -.01em; }
-
-    .intro { display: flex; gap: 1.8rem; align-items: flex-start; }
-    .intro .bio { flex: 1; }
-    .intro p { margin: 0 0 .9rem; color: var(--ink-soft); }
-    .intro p strong, .intro .bio b { color: var(--ink); font-weight: 600; }
-
-    .headshot {
-      flex: 0 0 200px; width: 200px; height: 200px; border-radius: 14px;
-      object-fit: cover; box-shadow: var(--shadow); filter: saturate(.96);
-    }
-
-    .socials { font-family: "JetBrains Mono", monospace; font-size: .82rem; margin-top: .4rem; color: var(--ink-faint); }
-    .socials a { color: var(--ink-soft); }
-    .socials a:hover { color: var(--accent); }
-    .socials .sep { color: var(--ink-faint); margin: 0 .35rem; }
-
-    h2.section {
-      font-size: 1.05rem; text-transform: uppercase; letter-spacing: .12em;
-      font-family: "JetBrains Mono", monospace; font-weight: 500; color: var(--ink-faint);
-      margin: 3.2rem 0 1.4rem; padding-bottom: .5rem; border-bottom: 1px solid var(--rule);
-    }
-
-    .prose p { color: var(--ink-soft); margin: 0 0 .9rem; }
-    .prose b { color: var(--ink); }
-
-    .tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
-    .tag {
-      font-family: "JetBrains Mono", monospace; font-size: .74rem; color: var(--ink-soft);
-      background: var(--tag-bg); border: 1px solid var(--rule);
-      padding: .3rem .65rem; border-radius: 7px;
-    }
-
-    .news { list-style: none; padding: 0; margin: 0; }
-    .news li { display: flex; gap: 1rem; padding: .35rem 0; color: var(--ink-soft); }
-    .news .date { flex: 0 0 5.5rem; font-family: "JetBrains Mono", monospace; font-size: .78rem; color: var(--accent); padding-top: .15rem; }
-
-    .pub { display: grid; grid-template-columns: 190px 1fr; gap: 1.5rem; padding: 1.4rem 0; border-bottom: 1px solid var(--rule); animation: rise .6s ease both; }
-    .pub:last-of-type { border-bottom: none; }
-    .pub .thumb { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 9px; background: var(--bg-card); box-shadow: var(--shadow); transition: transform .3s ease, box-shadow .3s ease; }
-    .pub:hover .thumb { transform: translateY(-4px) scale(1.015); }
-    .pub .title { font-family: "Newsreader", serif; font-size: 1.22rem; line-height: 1.25; margin: 0 0 .35rem; }
-    .pub .authors { font-size: .9rem; color: var(--ink-soft); margin: 0 0 .15rem; }
-    .pub .authors .me { color: var(--ink); font-weight: 600; }
-    .pub .venue { font-family: "JetBrains Mono", monospace; font-size: .76rem; color: var(--ink-faint); margin: 0 0 .5rem; }
-    .pub .pubrow { font-size: .82rem; margin: 0 0 .5rem; }
-    .pub .pubrow a { font-family: "JetBrains Mono", monospace; }
-    .pub .pubrow .dot { color: var(--ink-faint); margin: 0 .3rem; }
-    .pub .desc { font-size: .92rem; color: var(--ink-soft); margin: 0; }
-
-    .placeholder-note {
-      font-size: .92rem; color: var(--ink-soft);
-      background: var(--bg-card); border: 1px dashed var(--rule);
-      border-radius: 10px; padding: 1rem 1.2rem;
-    }
-
-    footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); font-size: .8rem; color: var(--ink-faint); font-family: "JetBrains Mono", monospace; }
-
-    @media (max-width: 620px) {
-      .intro { flex-direction: column-reverse; gap: 1.2rem; }
-      .headshot { width: 150px; height: 150px; flex-basis: 150px; }
-      .pub { grid-template-columns: 1fr; gap: .9rem; }
-      .pub .thumb { max-width: 280px; }
-      .news li { flex-direction: column; gap: .1rem; }
-      .news .date { flex-basis: auto; }
-    }
-    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-  </style>
+  <link rel="stylesheet" href="assets/s.css" />
 </head>
 
 <body>
@@ -171,7 +25,6 @@
       <button class="toggle" id="themeToggle" aria-label="Toggle dark mode">DARK MODE</button>
     </div>
 
-    <!-- ===================== HEADER ===================== -->
     <header>
       <h1 class="name">Niklas Leinz</h1>
 
@@ -208,7 +61,6 @@
       </div>
     </header>
 
-    <!-- ===================== RESEARCH ===================== -->
     <h2 class="section">Research</h2>
     <div class="prose">
       <p>
@@ -238,40 +90,15 @@
       </div>
     </div>
 
-    <!-- ===================== PUBLICATIONS ===================== -->
     <h2 class="section">Publications</h2>
 
     <p style="color:var(--ink-soft);">Coming soon.</p>
 
-    <!--  PUBLICATION TEMPLATE — copy this block out of the comment per paper:
-
-    <article class="pub">
-      <a href="PROJECT_PAGE_URL"><img class="thumb" alt="paper figure" src="images/paper1.jpg" /></a>
-      <div>
-        <h3 class="title"><a class="link" href="PAPER_URL">Paper Title</a></h3>
-        <p class="authors"><span class="me">Niklas Leinz</span>, Coauthor, Senior Author</p>
-        <p class="venue">Venue 2026</p>
-        <p class="pubrow">
-          <a class="link" href="#">arxiv</a><span class="dot">&middot;</span>
-          <a class="link" href="#">code</a><span class="dot">&middot;</span>
-          <a class="link" href="#">bibtex</a>
-        </p>
-        <p class="desc">One or two sentences in plain language: the problem and the key idea.</p>
-      </div>
-    </article>
-
-    -->
-
-    <!-- ===================== NEWS ===================== -->
     <h2 class="section">News</h2>
     <ul class="news">
       <li><span class="date">2025</span><span>Started my PhD at the Chair of Robotics, AI and Real-time Systems, TUM.</span></li>
-      <!-- Add new items on top, e.g.:
-      <li><span class="date">Mon 2026</span><span>Talk / paper / milestone — once cleared.</span></li>
-      -->
     </ul>
 
-    <!-- ===================== TEACHING & SERVICE (optional — edit or remove) ===================== -->
     <h2 class="section">Teaching</h2>
     <div class="prose">
       <p>
