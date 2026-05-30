@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://corusm.github.io/sitemap.xml
+Sitemap: https://leinz.dev/sitemap.xml
