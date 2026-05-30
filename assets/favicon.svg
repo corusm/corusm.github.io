@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    rect { fill: #1f5d6c; }
+    text { fill: #f7f8f6; }
+    @media (prefers-color-scheme: dark) {
+      rect { fill: #5fb8cc; }
+      text { fill: #101413; }
+    }
+  </style>
+  <rect width="64" height="64" rx="14"/>
+  <text x="32" y="33" text-anchor="middle" dominant-baseline="central"
+        font-family="Newsreader, Georgia, serif" font-weight="500"
+        font-size="34" letter-spacing="-1">NL</text>
+</svg>
